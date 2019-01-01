@@ -69,7 +69,7 @@ model.compile(optimizer = Adam(lr = 0.001), loss = 'categorical_crossentropy', m
 checkpointer = ModelCheckpoint(filepath='./logs/weights-improvement-{epoch:02d}-{val_acc:.2f}.h5', monitor='val_acc', save_best_only=True, save_weights_only=True, period=1)
 tensorboard = TensorBoard(log_dir='./logs/{}'.format(time.time()))
 
-model.fit(X_train.T, Y_train.T, epochs = 20000, batch_size = X_train.shape[1], callbacks = [checkpointer, tensorboard], validation_split = 0.1)
+model.fit(X_train.T, Y_train.T, epochs = 20000, batch_size = 256, callbacks = [checkpointer, tensorboard], validation_split = 0.1)
 
 model.save('model.h5')
 
